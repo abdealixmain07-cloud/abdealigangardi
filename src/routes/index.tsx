@@ -406,11 +406,15 @@ function Index() {
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel">
                 <img
                   alt="Abdeali Gangardiwala"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+                  style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+                  loading="eager"
+                  decoding="async"
                   src={portraitAsset.url}
                   width={800}
                   height={800}
                 />
+
               </div>
               <div className="absolute -bottom-4 -right-2 md:-right-4 bg-surface-container p-4 border border-primary/30 shadow-2xl glass-panel text-center min-w-[130px] rounded-xl">
                 <p className="text-xs text-primary mb-1 uppercase tracking-wider font-semibold">
