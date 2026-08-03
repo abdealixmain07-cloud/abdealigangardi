@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
-import portrait from "@/assets/portrait-placeholder.jpg";
+import portraitAsset from "@/assets/profile.png.asset.json";
 
 const SITE_URL = "https://cozy-creator-studio-25.lovable.app";
 
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
           name: "Abdeali Gangardiwala",
           jobTitle: "Financial Reporting & FP&A Analyst",
           email: "mailto:abdealixwork03@gmail.com",
-          telephone: "+971589243200",
+          telephone: "+971553037751",
           url: SITE_URL + "/",
           sameAs: ["https://www.linkedin.com/in/abdeali-main/"],
           address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
@@ -407,7 +407,7 @@ function Index() {
                 <img
                   alt="Abdeali Gangardiwala"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  src={portrait}
+                  src={portraitAsset.url}
                   width={800}
                   height={800}
                 />
@@ -543,14 +543,14 @@ function Index() {
           <p className="text-on-surface-variant text-lg mb-8">Feel free to contact</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
             <a
-              href="tel:+971589243200"
+              href="tel:+971553037751"
               className="md:col-span-2 flex flex-col items-center justify-center gap-2 p-6 md:p-8 border border-white/10 hover:border-primary/50 text-on-surface transition-all rounded-xl bg-surface-container-low hover:bg-white/5"
             >
               <Icon name="call" className="text-3xl mb-2 text-primary" />
               <span className="text-xs uppercase tracking-widest text-primary opacity-70">
                 Direct Line
               </span>
-              <span className="font-display text-xl sm:text-2xl md:text-3xl">+971 58 924 3200</span>
+              <span className="font-display text-xl sm:text-2xl md:text-3xl">+971 55 303 7751</span>
             </a>
             <a
               href="mailto:abdealixwork03@gmail.com"
