@@ -548,14 +548,21 @@ function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
             <a
               href="tel:+971553037751"
+              aria-label="Call Abdeali on +971 55 303 7751"
               className="md:col-span-2 flex flex-col items-center justify-center gap-2 p-6 md:p-8 border border-white/10 hover:border-primary/50 text-on-surface transition-all rounded-xl bg-surface-container-low hover:bg-white/5"
             >
               <Icon name="call" className="text-3xl mb-2 text-primary" />
               <span className="text-xs uppercase tracking-widest text-primary opacity-70">
                 Direct Line
               </span>
-              <span className="font-display text-xl sm:text-2xl md:text-3xl">+971 55 303 7751</span>
+              <span
+                className="font-display text-xl sm:text-2xl md:text-3xl whitespace-nowrap tabular-nums"
+                dir="ltr"
+              >
+                +971 55 303 7751
+              </span>
             </a>
+
             <a
               href="mailto:abdealixwork03@gmail.com"
               className="flex min-w-0 flex-col items-center justify-center gap-2 p-6 md:p-8 bg-primary text-on-primary transition-transform hover:scale-[1.02] rounded-xl"
