@@ -147,6 +147,21 @@
   border: 1px solid color-mix(in oklch, white 6%, transparent);
 }
 
+@utility glass-panel-hero {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--surface-container) 50%, transparent),
+    color-mix(in oklch, var(--surface-container-lowest) 65%, transparent)
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklch, white 6%, transparent);
+}
+
+@utility text-shadow {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
+}
+
 @utility rim-light {
   box-shadow:
     inset 0 1px 0 0 color-mix(in oklch, var(--primary) 22%, transparent),
