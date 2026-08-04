@@ -29,7 +29,10 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: SITE_URL + "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: SITE_URL + "/" }],
+    links: [
+      { rel: "canonical", href: SITE_URL + "/" },
+      { rel: "preload", as: "image", href: portraitAsset.url, fetchpriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -349,6 +352,34 @@ function TimelineCard({ item }: { item: TimelineItem }) {
   );
 }
 
+function Portrait() {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-surface-container-high">
+        <span className="font-display text-5xl text-primary">AG</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+      style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+      draggable={false}
+      onError={() => setFailed(true)}
+      src={portraitAsset.url}
+      width={800}
+      height={800}
+    />
+  );
+}
+
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -402,20 +433,16 @@ function Index() {
           </div>
           <div className="md:col-span-5 flex justify-center md:justify-end">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000" />
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel">
-                <img
-                  alt="Abdeali Gangardiwala"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
-                  style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
-                  loading="eager"
-                  decoding="async"
-                  src={portraitAsset.url}
-                  width={800}
-                  height={800}
-                />
-
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 group-focus-within:opacity-60 transition duration-1000" />
+              <div
+                tabIndex={0}
+                role="img"
+                aria-label="Portrait of Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai"
+                className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel outline-none focus-visible:ring-4 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
+              >
+                <Portrait />
               </div>
+
               <div className="absolute -bottom-4 -right-2 md:-right-4 bg-surface-container p-4 border border-primary/30 shadow-2xl glass-panel text-center min-w-[130px] rounded-xl">
                 <p className="text-xs text-primary mb-1 uppercase tracking-wider font-semibold">
                   Role Status
@@ -546,22 +573,29 @@ function Index() {
           </h2>
           <p className="text-on-surface-variant text-lg mb-8">Feel free to contact</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
-            <a
-              href="tel:+971553037751"
-              aria-label="Call Abdeali on +971 55 303 7751"
-              className="md:col-span-2 flex flex-col items-center justify-center gap-2 p-6 md:p-8 border border-white/10 hover:border-primary/50 text-on-surface transition-all rounded-xl bg-surface-container-low hover:bg-white/5"
-            >
-              <Icon name="call" className="text-3xl mb-2 text-primary" />
+            <div className="md:col-span-2 flex flex-col items-center justify-center gap-3 p-6 md:p-8 border border-white/10 text-on-surface rounded-xl bg-surface-container-low">
+              <Icon name="call" className="text-3xl text-primary" />
               <span className="text-xs uppercase tracking-widest text-primary opacity-70">
                 Direct Line
               </span>
-              <span
-                className="font-display text-xl sm:text-2xl md:text-3xl whitespace-nowrap tabular-nums"
+              <a
+                href="tel:+971553037751"
+                aria-label="Call Abdeali on +971 55 303 7751"
+                className="font-display text-xl sm:text-2xl md:text-3xl whitespace-nowrap tabular-nums hover:text-primary transition-colors"
                 dir="ltr"
               >
                 +971 55 303 7751
-              </span>
-            </a>
+              </a>
+              <a
+                href="tel:+971553037751"
+                aria-label="Tap to call Abdeali now"
+                className="mt-1 inline-flex w-full sm:w-auto min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3 font-bold text-on-primary transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Icon name="phone_in_talk" className="text-xl" />
+                Tap to Call
+              </a>
+            </div>
+
 
             <a
               href="mailto:abdealixwork03@gmail.com"
