@@ -391,26 +391,27 @@ function Index() {
         className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/85 to-background z-10" />
+          {/* Mobile: lighter overlay so the skyline stays visible; desktop: current cinematic darkening */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/55 to-background/95 z-10 md:from-background/50 md:via-background/85 md:to-background" />
           <img
             alt="Dubai night skyline"
-            className="w-full h-full object-cover opacity-55 scale-105"
+            className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-55 scale-105"
             src={heroBg}
             width={1920}
             height={1088}
           />
         </div>
         <div className="relative z-20 px-6 md:px-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-7 glass-panel p-6 md:p-12 rounded-xl rim-light gold-glow space-y-6">
+          <div className="md:col-span-7 glass-panel-hero md:glass-panel p-6 md:p-12 rounded-xl rim-light gold-glow space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               Qualified Member (CMA)
             </div>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold">
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold text-shadow">
               Financial Reporting &<br />
               FP&amp;A Analyst.
             </h1>
-            <p className="text-on-surface-variant text-lg max-w-xl">
+            <p className="text-on-surface-variant text-lg max-w-xl text-shadow">
               CMA professional with 2+ years of experience specializing in transforming complex
               multi-entity financial data into strategic decision-ready intelligence.
             </p>
