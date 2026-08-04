@@ -352,6 +352,34 @@ function TimelineCard({ item }: { item: TimelineItem }) {
   );
 }
 
+function Portrait() {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-surface-container-high">
+        <span className="font-display text-5xl text-primary">AG</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+      style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+      draggable={false}
+      onError={() => setFailed(true)}
+      src={portraitAsset.url}
+      width={800}
+      height={800}
+    />
+  );
+}
+
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
