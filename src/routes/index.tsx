@@ -405,20 +405,16 @@ function Index() {
           </div>
           <div className="md:col-span-5 flex justify-center md:justify-end">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000" />
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel">
-                <img
-                  alt="Abdeali Gangardiwala"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
-                  style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
-                  loading="eager"
-                  decoding="async"
-                  src={portraitAsset.url}
-                  width={800}
-                  height={800}
-                />
-
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 group-focus-within:opacity-60 transition duration-1000" />
+              <div
+                tabIndex={0}
+                role="img"
+                aria-label="Portrait of Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai"
+                className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel outline-none focus-visible:ring-4 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
+              >
+                <Portrait />
               </div>
+
               <div className="absolute -bottom-4 -right-2 md:-right-4 bg-surface-container p-4 border border-primary/30 shadow-2xl glass-panel text-center min-w-[130px] rounded-xl">
                 <p className="text-xs text-primary mb-1 uppercase tracking-wider font-semibold">
                   Role Status
