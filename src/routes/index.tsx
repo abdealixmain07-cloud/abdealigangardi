@@ -3,8 +3,9 @@ import { useState } from "react";
 
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
 import portraitAsset from "@/assets/profile.png.asset.json";
+import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
 
-const SITE_URL = "https://cozy-creator-studio-25.lovable.app";
+const SITE_URL = "https://cmaabdealixwork.lovable.app";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -60,7 +61,7 @@ export const Route = createFileRoute("/")({
 });
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/abdeali-main/";
-const RESUME_URL = "/abdeali-gangardiwala-cv.pdf";
+const RESUME_URL = resumeAsset.url;
 
 const TOOLS = [
   "Power BI",
