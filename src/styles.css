@@ -143,7 +143,6 @@
     color-mix(in oklch, var(--surface-container-lowest) 80%, transparent)
   );
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border: 1px solid color-mix(in oklch, white 6%, transparent);
 }
 
@@ -154,7 +153,6 @@
     color-mix(in oklch, var(--surface-container-lowest) 65%, transparent)
   );
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid color-mix(in oklch, white 6%, transparent);
 }
 
