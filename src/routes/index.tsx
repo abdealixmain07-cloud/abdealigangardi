@@ -420,8 +420,10 @@ function Portrait() {
         onLoad={() => setStatus("loaded")}
         onError={handleError}
         src={src}
-        width={800}
-        height={800}
+        srcSet={attempt === 0 ? PORTRAIT_SRCSET : undefined}
+        sizes={PORTRAIT_SIZES}
+        width={768}
+        height={768}
       />
     </div>
   );
