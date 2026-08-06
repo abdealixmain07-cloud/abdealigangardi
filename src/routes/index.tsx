@@ -360,7 +360,11 @@ function Portrait() {
 
   if (failed) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-surface-container-high">
+      <div
+        role="img"
+        aria-label="Abdeali Gangardiwala — portrait image failed to load; showing initials fallback"
+        className="w-full h-full flex items-center justify-center bg-surface-container-high"
+      >
         <span className="font-display text-5xl text-primary">AG</span>
       </div>
     );
@@ -406,9 +410,15 @@ function Index() {
         </div>
         <div className="relative z-20 px-6 md:px-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7 glass-panel-hero md:glass-panel p-6 md:p-12 rounded-xl rim-light gold-glow space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              Qualified Member (CMA)
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                Qualified Member (CMA)
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
+                <Icon name="location_on" className="text-sm" />
+                Dubai, UAE
+              </div>
             </div>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold text-shadow">
               Financial Reporting &<br />
@@ -628,6 +638,14 @@ function Index() {
       </section>
 
       <footer className="border-t border-white/5 py-8 px-4 text-center text-[11px] sm:text-xs text-on-surface-variant tracking-widest uppercase">
+        <p className="mb-2">
+          <a
+            href="mailto:abdealixmain07@gmail.com"
+            className="hover:text-primary transition-colors"
+          >
+            abdealixmain07@gmail.com
+          </a>
+        </p>
         © {new Date().getFullYear()} Abdeali Gangardiwala · CMA
       </footer>
     </main>
