@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
-import portraitAsset from "@/assets/profile.png.asset.json";
 import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
+
+const PORTRAIT_URL = "https://imglink.cc/cdn/1ELmsIm5qT.png";
+
 
 const SITE_URL = "https://cmaabdealixwork.lovable.app";
 
