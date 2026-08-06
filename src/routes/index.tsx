@@ -355,10 +355,28 @@ function TimelineCard({ item }: { item: TimelineItem }) {
   );
 }
 
-function Portrait() {
-  const [failed, setFailed] = useState(false);
+const MAX_PORTRAIT_RETRIES = 3;
 
-  if (failed) {
+function Portrait() {
+  const [attempt, setAttempt] = useState(0);
+  const [status, setStatus] = useState<"loading" | "loaded" | "failed">("loading");
+
+  const src = attempt === 0 ? PORTRAIT_URL : `${PORTRAIT_URL}?retry=${attempt}`;
+
+  const handleError = () => {
+    if (attempt < MAX_PORTRAIT_RETRIES) {
+      const next = attempt + 1;
+      // exponential backoff before re-requesting the image
+      setTimeout(() => {
+        setStatus("loading");
+        setAttempt(next);
+      }, 400 * 2 ** attempt);
+    } else {
+      setStatus("failed");
+    }
+  };
+
+  if (status === "failed") {
     return (
       <div
         role="img"
@@ -371,21 +389,38 @@ function Portrait() {
   }
 
   return (
-    <img
-      alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
-      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
-      style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
-      loading="eager"
-      fetchPriority="high"
-      decoding="async"
-      draggable={false}
-      onError={() => setFailed(true)}
-      src={PORTRAIT_URL}
-      width={800}
-      height={800}
-    />
+    <div className="relative w-full h-full">
+      {status === "loading" && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high animate-pulse"
+        >
+          <span className="font-display text-5xl text-primary/40">AG</span>
+        </div>
+      )}
+      <img
+        key={attempt}
+        alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+        style={{
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          opacity: status === "loaded" ? 1 : 0,
+        }}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+        onLoad={() => setStatus("loaded")}
+        onError={handleError}
+        src={src}
+        width={800}
+        height={800}
+      />
+    </div>
   );
 }
+
 
 function Index() {
   return (
