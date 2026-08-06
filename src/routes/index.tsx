@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
-import portraitAsset from "@/assets/profile.png.asset.json";
 import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
+
+const PORTRAIT_URL = "https://imglink.cc/cdn/1ELmsIm5qT.png";
+
 
 const SITE_URL = "https://cmaabdealixwork.lovable.app";
 
@@ -32,7 +34,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: SITE_URL + "/" },
-      { rel: "preload", as: "image", href: portraitAsset.url, fetchPriority: "high" },
+      { rel: "preload", as: "image", href: PORTRAIT_URL, fetchPriority: "high" },
     ],
     scripts: [
       {
@@ -42,7 +44,7 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Abdeali Gangardiwala",
           jobTitle: "Financial Reporting & FP&A Analyst",
-          email: "mailto:abdealixwork03@gmail.com",
+          email: "mailto:abdealixmain07@gmail.com",
           telephone: "+971553037751",
           url: SITE_URL + "/",
           sameAs: ["https://www.linkedin.com/in/abdeali-main/"],
@@ -374,7 +376,7 @@ function Portrait() {
       decoding="async"
       draggable={false}
       onError={() => setFailed(true)}
-      src={portraitAsset.url}
+      src={PORTRAIT_URL}
       width={800}
       height={800}
     />
@@ -600,13 +602,13 @@ function Index() {
 
 
             <a
-              href="mailto:abdealixwork03@gmail.com"
+              href="mailto:abdealixmain07@gmail.com"
               className="flex min-w-0 flex-col items-center justify-center gap-2 p-6 md:p-8 bg-primary text-on-primary transition-transform hover:scale-[1.02] rounded-xl"
             >
               <Icon name="mail" className="text-3xl mb-2" />
               <span className="text-xs uppercase tracking-widest opacity-80">Email Address</span>
               <span className="w-full max-w-full font-bold text-sm sm:text-base md:text-lg break-words leading-snug">
-                abdealixwork03@gmail.com
+                abdealixmain07@gmail.com
               </span>
             </a>
             <a
