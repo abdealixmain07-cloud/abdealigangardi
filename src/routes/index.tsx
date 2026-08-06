@@ -4,7 +4,13 @@ import { useState } from "react";
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
 import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
 
-const PORTRAIT_URL = "https://imglink.cc/cdn/1ELmsIm5qT.png";
+import portrait480 from "@/assets/portrait-480.webp";
+import portrait768 from "@/assets/portrait-768.webp";
+import portrait1024 from "@/assets/portrait-1024.webp";
+
+const PORTRAIT_URL = portrait768;
+const PORTRAIT_SRCSET = `${portrait480} 480w, ${portrait768} 768w, ${portrait1024} 1024w`;
+const PORTRAIT_SIZES = "(max-width: 768px) 60vw, 400px";
 
 
 const SITE_URL = "https://cmaabdealixwork.lovable.app";
