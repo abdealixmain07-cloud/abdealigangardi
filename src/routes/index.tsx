@@ -366,13 +366,19 @@ const MAX_PORTRAIT_RETRIES = 3;
 function Portrait() {
   const [attempt, setAttempt] = useState(0);
   const [status, setStatus] = useState<"loading" | "loaded" | "failed">("loading");
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
   const src = attempt === 0 ? PORTRAIT_URL : `${PORTRAIT_URL}?retry=${attempt}`;
+
+  // Images cached or served during SSR can finish before React attaches onLoad.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth > 0) setStatus("loaded");
+  }, [attempt]);
 
   const handleError = () => {
     if (attempt < MAX_PORTRAIT_RETRIES) {
       const next = attempt + 1;
-      // exponential backoff before re-requesting the image
       setTimeout(() => {
         setStatus("loading");
         setAttempt(next);
@@ -382,52 +388,46 @@ function Portrait() {
     }
   };
 
-  if (status === "failed") {
-    return (
-      <div
-        role="img"
-        aria-label="Abdeali Gangardiwala — portrait image failed to load; showing initials fallback"
-        className="w-full h-full flex items-center justify-center bg-surface-container-high"
-      >
-        <span className="font-display text-5xl text-primary">AG</span>
-      </div>
-    );
-  }
-
   return (
     <div className="relative w-full h-full">
-      {status === "loading" && (
+      {status !== "loaded" && (
         <div
-          aria-hidden="true"
-          className="absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high animate-pulse"
+          role="img"
+          aria-label="Abdeali Gangardiwala — portrait"
+          className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high ${
+            status === "loading" ? "animate-pulse" : ""
+          }`}
         >
-          <span className="font-display text-5xl text-primary/40">AG</span>
+          <span className="font-display text-5xl text-primary/60">AG</span>
         </div>
       )}
-      <img
-        key={attempt}
-        alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
-        style={{
-          WebkitBackfaceVisibility: "hidden",
-          backfaceVisibility: "hidden",
-          opacity: status === "loaded" ? 1 : 0,
-        }}
-        loading="eager"
-        fetchPriority="high"
-        decoding="async"
-        draggable={false}
-        onLoad={() => setStatus("loaded")}
-        onError={handleError}
-        src={src}
-        srcSet={attempt === 0 ? PORTRAIT_SRCSET : undefined}
-        sizes={PORTRAIT_SIZES}
-        width={768}
-        height={768}
-      />
+      {status !== "failed" && (
+        <img
+          key={attempt}
+          ref={imgRef}
+          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+          className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+          style={{
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+          }}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          draggable={false}
+          onLoad={() => setStatus("loaded")}
+          onError={handleError}
+          src={src}
+          srcSet={attempt === 0 ? PORTRAIT_SRCSET : undefined}
+          sizes={PORTRAIT_SIZES}
+          width={768}
+          height={768}
+        />
+      )}
     </div>
   );
 }
+
 
 
 function Index() {
