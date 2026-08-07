@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import heroBg from "@/assets/hero-dubai-skyline.jpg";
 import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
