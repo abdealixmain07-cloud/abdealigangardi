@@ -441,11 +441,11 @@ function Index() {
         className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          {/* Mobile: lighter overlay so the skyline stays visible; desktop: current cinematic darkening */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/55 to-background/95 z-10 md:from-background/50 md:via-background/85 md:to-background" />
+          {/* Light overlay so the Dubai skyline stays visible behind the content */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/30 to-background/80 z-10 md:from-background/15 md:via-background/55 md:to-background" />
           <img
             alt="Dubai night skyline"
-            className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-55 scale-105"
+            className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-80 scale-105"
             src={heroBg}
             width={1920}
             height={1088}

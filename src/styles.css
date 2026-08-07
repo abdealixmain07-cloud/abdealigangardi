@@ -149,8 +149,8 @@
 @utility glass-panel-hero {
   background: linear-gradient(
     135deg,
-    color-mix(in oklch, var(--surface-container) 50%, transparent),
-    color-mix(in oklch, var(--surface-container-lowest) 65%, transparent)
+    color-mix(in oklch, var(--surface-container) 30%, transparent),
+    color-mix(in oklch, var(--surface-container-lowest) 45%, transparent)
   );
   backdrop-filter: blur(12px);
   border: 1px solid color-mix(in oklch, white 6%, transparent);
