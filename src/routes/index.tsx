@@ -373,7 +373,25 @@ function Portrait() {
   // Images cached or served during SSR can finish before React attaches onLoad.
   useEffect(() => {
     const img = imgRef.current;
-    if (img?.complete && img.naturalWidth > 0) setStatus("loaded");
+    if (img?.complete && img.naturalWidth > 0) {
+      setStatus("loaded");
+      return;
+    }
+    // Runtime watchdog: if the image never reports back after hydration
+    // (missed event, stalled decode), poll then force a re-render/retry.
+    let ticks = 0;
+    const id = window.setInterval(() => {
+      ticks += 1;
+      const el = imgRef.current;
+      if (el?.complete && el.naturalWidth > 0) {
+        setStatus("loaded");
+        window.clearInterval(id);
+      } else if (ticks >= 6) {
+        window.clearInterval(id);
+        setAttempt((a) => (a < MAX_PORTRAIT_RETRIES ? a + 1 : a));
+      }
+    }, 500);
+    return () => window.clearInterval(id);
   }, [attempt]);
 
   const handleError = () => {
@@ -389,24 +407,25 @@ function Portrait() {
   };
 
   return (
-    <div className="relative w-full h-full">
-      {status !== "loaded" && (
-        <div
-          role="img"
-          aria-label="Abdeali Gangardiwala — portrait"
-          className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high ${
-            status === "loading" ? "animate-pulse" : ""
-          }`}
-        >
-          <span className="font-display text-5xl text-primary/60">AG</span>
-        </div>
-      )}
+    <div className="relative w-full h-full bg-surface-container-high">
+      <div
+        role="img"
+        aria-label="Abdeali Gangardiwala — portrait"
+        aria-hidden={status === "loaded"}
+        className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high transition-opacity duration-500 ease-out ${
+          status === "loaded" ? "opacity-0 pointer-events-none" : "opacity-100"
+        } ${status === "loading" ? "animate-pulse" : ""}`}
+      >
+        <span className="font-display text-5xl text-primary/60">AG</span>
+      </div>
       {status !== "failed" && (
         <img
           key={attempt}
           ref={imgRef}
           alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform] duration-700 ease-out will-change-[filter] motion-reduce:transition-none"
+          className={`w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter,opacity] motion-reduce:transition-none ${
+            status === "loaded" ? "opacity-100" : "opacity-0"
+          }`}
           style={{
             WebkitBackfaceVisibility: "hidden",
             backfaceVisibility: "hidden",
@@ -427,6 +446,7 @@ function Portrait() {
     </div>
   );
 }
+
 
 
 
