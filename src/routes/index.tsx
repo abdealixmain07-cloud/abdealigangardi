@@ -315,11 +315,14 @@ function ProjectCard({ project }: { project: Project }) {
               </div>
               <div className="rounded overflow-hidden border border-white/10 h-56 sm:h-64 md:h-full md:min-h-64">
                 <img
-                  alt={project.title}
+                  alt={`${project.title} — project visual`}
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   className="w-full h-full object-contain bg-surface-container-lowest"
                   src={project.image}
                 />
+
               </div>
             </div>
           </div>
