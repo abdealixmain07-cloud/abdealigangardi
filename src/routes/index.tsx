@@ -489,12 +489,16 @@ function Index() {
           {/* Light overlay so the Dubai skyline stays visible behind the content */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/30 to-background/80 z-10 md:from-background/15 md:via-background/55 md:to-background" />
           <img
-            alt="Dubai night skyline"
+            alt="Dubai skyline at night with illuminated high-rise towers"
             className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-80 scale-105"
             src={heroBg}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             width={1920}
             height={1088}
           />
+
         </div>
         <div className="relative z-20 px-6 md:px-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7 glass-panel-hero md:glass-panel p-6 md:p-12 rounded-xl rim-light gold-glow space-y-6">
