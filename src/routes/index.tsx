@@ -315,11 +315,14 @@ function ProjectCard({ project }: { project: Project }) {
               </div>
               <div className="rounded overflow-hidden border border-white/10 h-56 sm:h-64 md:h-full md:min-h-64">
                 <img
-                  alt={project.title}
+                  alt={`${project.title} — project visual`}
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   className="w-full h-full object-contain bg-surface-container-lowest"
                   src={project.image}
                 />
+
               </div>
             </div>
           </div>
@@ -363,6 +366,15 @@ function TimelineCard({ item }: { item: TimelineItem }) {
 
 const MAX_PORTRAIT_RETRIES = 3;
 
+function logPortrait(event: string, detail: Record<string, unknown> = {}) {
+  if (typeof window === "undefined") return;
+  const elapsed = Math.round(
+    performance.now() - (window as unknown as { __portraitStart?: number }).__portraitStart!,
+  );
+  // eslint-disable-next-line no-console
+  console.info(`[portrait] ${event}`, { elapsedMs: Number.isFinite(elapsed) ? elapsed : null, ...detail });
+}
+
 function Portrait() {
   const [attempt, setAttempt] = useState(0);
   const [status, setStatus] = useState<"loading" | "loaded" | "failed">("loading");
@@ -372,9 +384,12 @@ function Portrait() {
 
   // Images cached or served during SSR can finish before React attaches onLoad.
   useEffect(() => {
+    const w = window as unknown as { __portraitStart?: number };
+    if (w.__portraitStart === undefined) w.__portraitStart = performance.now();
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth > 0) {
       setStatus("loaded");
+      logPortrait("loaded", { source: "cache-or-ssr", attempt });
       return;
     }
     // Runtime watchdog: if the image never reports back after hydration
@@ -385,9 +400,11 @@ function Portrait() {
       const el = imgRef.current;
       if (el?.complete && el.naturalWidth > 0) {
         setStatus("loaded");
+        logPortrait("loaded", { source: "watchdog", attempt });
         window.clearInterval(id);
       } else if (ticks >= 6) {
         window.clearInterval(id);
+        logPortrait("watchdog-timeout", { attempt });
         setAttempt((a) => (a < MAX_PORTRAIT_RETRIES ? a + 1 : a));
       }
     }, 500);
@@ -397,11 +414,13 @@ function Portrait() {
   const handleError = () => {
     if (attempt < MAX_PORTRAIT_RETRIES) {
       const next = attempt + 1;
+      logPortrait("error-retry", { attempt, nextAttempt: next });
       setTimeout(() => {
         setStatus("loading");
         setAttempt(next);
       }, 400 * 2 ** attempt);
     } else {
+      logPortrait("fallback-initials", { attempt });
       setStatus("failed");
     }
   };
@@ -409,20 +428,25 @@ function Portrait() {
   return (
     <div className="relative w-full h-full bg-surface-container-high">
       <div
-        role="img"
-        aria-label="Abdeali Gangardiwala — portrait"
-        aria-hidden={status === "loaded"}
-        className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high transition-opacity duration-500 ease-out ${
+        aria-hidden="true"
+        className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high transition-opacity duration-500 ease-out motion-reduce:transition-none ${
           status === "loaded" ? "opacity-0 pointer-events-none" : "opacity-100"
-        } ${status === "loading" ? "animate-pulse" : ""}`}
+        } ${status === "loading" ? "animate-pulse motion-reduce:animate-none" : ""}`}
       >
         <span className="font-display text-5xl text-primary/60">AG</span>
       </div>
+      <span role="status" aria-live="polite" className="sr-only">
+        {status === "loading"
+          ? "Portrait of Abdeali Gangardiwala is loading"
+          : status === "failed"
+            ? "Portrait image unavailable; showing initials A G instead"
+            : "Portrait of Abdeali Gangardiwala loaded"}
+      </span>
       {status !== "failed" && (
         <img
           key={attempt}
           ref={imgRef}
-          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai, wearing glasses and a dark suit"
           className={`w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter,opacity] motion-reduce:transition-none ${
             status === "loaded" ? "opacity-100" : "opacity-0"
           }`}
@@ -434,7 +458,10 @@ function Portrait() {
           fetchPriority="high"
           decoding="async"
           draggable={false}
-          onLoad={() => setStatus("loaded")}
+          onLoad={() => {
+            setStatus("loaded");
+            logPortrait("loaded", { source: "onload", attempt });
+          }}
           onError={handleError}
           src={src}
           srcSet={attempt === 0 ? PORTRAIT_SRCSET : undefined}
@@ -446,6 +473,7 @@ function Portrait() {
     </div>
   );
 }
+
 
 
 
@@ -464,12 +492,16 @@ function Index() {
           {/* Light overlay so the Dubai skyline stays visible behind the content */}
           <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/30 to-background/80 z-10 md:from-background/15 md:via-background/55 md:to-background" />
           <img
-            alt="Dubai night skyline"
+            alt="Dubai skyline at night with illuminated high-rise towers"
             className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-80 scale-105"
             src={heroBg}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             width={1920}
             height={1088}
           />
+
         </div>
         <div className="relative z-20 px-6 md:px-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7 glass-panel-hero md:glass-panel p-6 md:p-12 rounded-xl rim-light gold-glow space-y-6">
@@ -510,14 +542,13 @@ function Index() {
           </div>
           <div className="md:col-span-5 flex justify-center md:justify-end">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 group-focus-within:opacity-60 transition duration-1000" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-full blur opacity-30 group-hover:opacity-60 group-focus-within:opacity-60 transition duration-1000 motion-reduce:transition-none" />
               <div
                 tabIndex={0}
-                role="img"
-                aria-label="Portrait of Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai"
                 className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-surface-container overflow-hidden rounded-full border-4 border-primary/40 glass-panel outline-none focus-visible:ring-4 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
               >
                 <Portrait />
+
               </div>
 
               <div className="absolute -bottom-4 -right-2 md:-right-4 bg-surface-container p-4 border border-primary/30 shadow-2xl glass-panel text-center min-w-[130px] rounded-xl">
