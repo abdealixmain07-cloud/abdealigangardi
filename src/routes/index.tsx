@@ -363,6 +363,15 @@ function TimelineCard({ item }: { item: TimelineItem }) {
 
 const MAX_PORTRAIT_RETRIES = 3;
 
+function logPortrait(event: string, detail: Record<string, unknown> = {}) {
+  if (typeof window === "undefined") return;
+  const elapsed = Math.round(
+    performance.now() - (window as unknown as { __portraitStart?: number }).__portraitStart!,
+  );
+  // eslint-disable-next-line no-console
+  console.info(`[portrait] ${event}`, { elapsedMs: Number.isFinite(elapsed) ? elapsed : null, ...detail });
+}
+
 function Portrait() {
   const [attempt, setAttempt] = useState(0);
   const [status, setStatus] = useState<"loading" | "loaded" | "failed">("loading");
@@ -372,9 +381,12 @@ function Portrait() {
 
   // Images cached or served during SSR can finish before React attaches onLoad.
   useEffect(() => {
+    const w = window as unknown as { __portraitStart?: number };
+    if (w.__portraitStart === undefined) w.__portraitStart = performance.now();
     const img = imgRef.current;
     if (img?.complete && img.naturalWidth > 0) {
       setStatus("loaded");
+      logPortrait("loaded", { source: "cache-or-ssr", attempt });
       return;
     }
     // Runtime watchdog: if the image never reports back after hydration
@@ -385,9 +397,11 @@ function Portrait() {
       const el = imgRef.current;
       if (el?.complete && el.naturalWidth > 0) {
         setStatus("loaded");
+        logPortrait("loaded", { source: "watchdog", attempt });
         window.clearInterval(id);
       } else if (ticks >= 6) {
         window.clearInterval(id);
+        logPortrait("watchdog-timeout", { attempt });
         setAttempt((a) => (a < MAX_PORTRAIT_RETRIES ? a + 1 : a));
       }
     }, 500);
@@ -397,11 +411,13 @@ function Portrait() {
   const handleError = () => {
     if (attempt < MAX_PORTRAIT_RETRIES) {
       const next = attempt + 1;
+      logPortrait("error-retry", { attempt, nextAttempt: next });
       setTimeout(() => {
         setStatus("loading");
         setAttempt(next);
       }, 400 * 2 ** attempt);
     } else {
+      logPortrait("fallback-initials", { attempt });
       setStatus("failed");
     }
   };
@@ -409,20 +425,25 @@ function Portrait() {
   return (
     <div className="relative w-full h-full bg-surface-container-high">
       <div
-        role="img"
-        aria-label="Abdeali Gangardiwala — portrait"
-        aria-hidden={status === "loaded"}
-        className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high transition-opacity duration-500 ease-out ${
+        aria-hidden="true"
+        className={`absolute inset-0 z-10 flex items-center justify-center bg-surface-container-high transition-opacity duration-500 ease-out motion-reduce:transition-none ${
           status === "loaded" ? "opacity-0 pointer-events-none" : "opacity-100"
-        } ${status === "loading" ? "animate-pulse" : ""}`}
+        } ${status === "loading" ? "animate-pulse motion-reduce:animate-none" : ""}`}
       >
         <span className="font-display text-5xl text-primary/60">AG</span>
       </div>
+      <span role="status" aria-live="polite" className="sr-only">
+        {status === "loading"
+          ? "Portrait of Abdeali Gangardiwala is loading"
+          : status === "failed"
+            ? "Portrait image unavailable; showing initials A G instead"
+            : "Portrait of Abdeali Gangardiwala loaded"}
+      </span>
       {status !== "failed" && (
         <img
           key={attempt}
           ref={imgRef}
-          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst, portrait photo"
+          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai, wearing glasses and a dark suit"
           className={`w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter,opacity] motion-reduce:transition-none ${
             status === "loaded" ? "opacity-100" : "opacity-0"
           }`}
@@ -434,7 +455,10 @@ function Portrait() {
           fetchPriority="high"
           decoding="async"
           draggable={false}
-          onLoad={() => setStatus("loaded")}
+          onLoad={() => {
+            setStatus("loaded");
+            logPortrait("loaded", { source: "onload", attempt });
+          }}
           onError={handleError}
           src={src}
           srcSet={attempt === 0 ? PORTRAIT_SRCSET : undefined}
@@ -446,6 +470,7 @@ function Portrait() {
     </div>
   );
 }
+
 
 
 
