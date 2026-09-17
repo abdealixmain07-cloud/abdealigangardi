@@ -209,7 +209,7 @@ function Icon({ name, className = "" }: { name: string; className?: string }) {
 
 function TopNav() {
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/60 border-b border-white/5">
+    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/85 border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:flex md:justify-between">
         <a href="#about" className="flex min-w-0 items-center gap-2 font-display text-lg">
           <span className="text-primary shrink-0">AG.</span>
@@ -246,7 +246,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       className={`glass-panel overflow-hidden rounded-xl border transition-all duration-500 ${
-        open ? "gold-glow border-primary/30" : "border-white/5 hover:border-primary/30"
+        open ? "gold-glow border-primary/30" : "border-border hover:border-primary/30"
       }`}
     >
       <button
@@ -283,7 +283,7 @@ function ProjectCard({ project }: { project: Project }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="border-t border-white/5">
+          <div className="border-t border-border">
             <div className="p-5 sm:p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <div className="space-y-4">
                 <div>
@@ -306,14 +306,14 @@ function ProjectCard({ project }: { project: Project }) {
                   {project.chips.map((c) => (
                     <span
                       key={c}
-                      className="px-3 py-1 bg-surface-container-high text-xs text-on-surface-variant border border-white/5 rounded"
+                      className="px-3 py-1 bg-surface-container-high text-xs text-on-surface-variant border border-border rounded"
                     >
                       {c}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="rounded overflow-hidden border border-white/10 h-56 sm:h-64 md:h-full md:min-h-64">
+              <div className="rounded overflow-hidden border border-border h-56 sm:h-64 md:h-full md:min-h-64">
                 <img
                   alt={`${project.title} — project visual`}
                   loading="lazy"
@@ -334,7 +334,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function TimelineCard({ item }: { item: TimelineItem }) {
   return (
-    <div className="glass-panel rounded-xl border border-white/5 p-5 md:p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-15px_rgba(242,202,80,0.35)]">
+    <div className="glass-panel rounded-xl border border-border p-5 md:p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-0.5 hover:gold-glow">
       <div className="flex items-start gap-3">
         <div className="w-10 h-10 shrink-0 rounded-md bg-surface-container-high flex items-center justify-center">
           <Icon name={item.icon} className="text-xl text-primary" />
@@ -490,7 +490,7 @@ function Index() {
       >
         <div className="absolute inset-0 z-0">
           {/* Light overlay so the Dubai skyline stays visible behind the content */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/30 to-background/80 z-10 md:from-background/15 md:via-background/55 md:to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/45 to-background/95 z-10 md:from-background/20 md:via-background/60 md:to-background/95" />
           <img
             alt="Dubai skyline at night with illuminated high-rise towers"
             className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-80 scale-105"
@@ -533,7 +533,7 @@ function Index() {
               <a
                 href={RESUME_URL}
                 download
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/10 hover:border-primary/50 text-on-surface transition-all rounded hover:bg-white/5"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-border hover:border-primary/50 text-on-surface transition-all rounded hover:bg-surface-container-low"
               >
                 <Icon name="download" className="text-xl text-primary" />
                 Download Resume
@@ -563,7 +563,7 @@ function Index() {
       </section>
 
       {/* Tools strip */}
-      <section aria-label="Tools and software" className="bg-primary border-y border-white/5">
+      <section aria-label="Tools and software" className="bg-primary border-y border-primary">
         <div className="hidden sm:block w-full py-6 overflow-hidden whitespace-nowrap">
           <div className="flex animate-scroll gap-10">
             {[...TOOLS, ...TOOLS].map((t, i) => (
@@ -642,7 +642,7 @@ function Index() {
                         </p>
                       </div>
                       <div className="absolute left-0 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-primary/40 rounded-full flex items-center justify-center z-10 group-hover:border-primary transition-colors">
-                        <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(242,202,80,0.6)]" />
+                        <div className="w-2 h-2 bg-primary rounded-full gold-dot" />
                       </div>
                       <div className="pl-10 md:pl-12 md:w-1/2">
                         <TimelineCard item={item} />
@@ -654,7 +654,7 @@ function Index() {
                         <TimelineCard item={item} />
                       </div>
                       <div className="absolute left-0 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-primary/40 rounded-full flex items-center justify-center z-10 group-hover:border-primary transition-colors">
-                        <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(242,202,80,0.6)]" />
+                        <div className="w-2 h-2 bg-primary rounded-full gold-dot" />
                       </div>
                       <div className="hidden md:block md:w-1/2 pl-12">
                         <p className="text-on-surface-variant text-xs tracking-widest uppercase group-hover:text-primary transition-colors">
@@ -681,7 +681,7 @@ function Index() {
           </h2>
           <p className="text-on-surface-variant text-lg mb-8">Feel free to contact</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
-            <div className="md:col-span-2 flex flex-col items-center justify-center gap-3 p-6 md:p-8 border border-white/10 text-on-surface rounded-xl bg-surface-container-low">
+            <div className="md:col-span-2 flex flex-col items-center justify-center gap-3 p-6 md:p-8 border border-border text-on-surface rounded-xl bg-surface-container-low">
               <Icon name="call" className="text-3xl text-primary" />
               <span className="text-xs uppercase tracking-widest text-primary opacity-70">
                 Direct Line
@@ -719,7 +719,7 @@ function Index() {
               href={LINKEDIN_URL}
               target="_blank"
               rel="noreferrer"
-              className="flex flex-col items-center justify-center gap-2 p-6 md:p-8 border border-white/10 hover:border-primary/50 text-on-surface transition-all rounded-xl bg-surface-container-low hover:bg-white/5"
+              className="flex flex-col items-center justify-center gap-2 p-6 md:p-8 border border-border hover:border-primary/50 text-on-surface transition-all rounded-xl bg-surface-container-low hover:bg-surface-container-high"
             >
               <Icon name="link" className="text-3xl mb-2 text-primary" />
               <span className="text-xs uppercase tracking-widest text-primary opacity-70">
@@ -731,7 +731,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-white/5 py-8 px-4 text-center text-[11px] sm:text-xs text-on-surface-variant tracking-widest uppercase">
+      <footer className="border-t border-border py-8 px-4 text-center text-[11px] sm:text-xs text-on-surface-variant tracking-widest uppercase">
         <p className="mb-2">
           <a
             href="mailto:abdealixmain07@gmail.com"
