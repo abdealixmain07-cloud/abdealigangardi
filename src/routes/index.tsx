@@ -642,7 +642,7 @@ function Index() {
                         </p>
                       </div>
                       <div className="absolute left-0 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-primary/40 rounded-full flex items-center justify-center z-10 group-hover:border-primary transition-colors">
-                        <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(242,202,80,0.6)]" />
+                        <div className="w-2 h-2 bg-primary rounded-full gold-dot" />
                       </div>
                       <div className="pl-10 md:pl-12 md:w-1/2">
                         <TimelineCard item={item} />
@@ -654,7 +654,7 @@ function Index() {
                         <TimelineCard item={item} />
                       </div>
                       <div className="absolute left-0 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-8 h-8 bg-surface-container-lowest border border-primary/40 rounded-full flex items-center justify-center z-10 group-hover:border-primary transition-colors">
-                        <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_rgba(242,202,80,0.6)]" />
+                        <div className="w-2 h-2 bg-primary rounded-full gold-dot" />
                       </div>
                       <div className="hidden md:block md:w-1/2 pl-12">
                         <p className="text-on-surface-variant text-xs tracking-widest uppercase group-hover:text-primary transition-colors">

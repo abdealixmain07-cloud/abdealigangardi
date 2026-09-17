@@ -124,7 +124,11 @@
 }
 
 @utility text-shadow {
-  text-shadow: 0 1px 12px color-mix(in oklch, white 85%, transparent);
+  text-shadow: 0 1px 12px color-mix(in oklch, var(--surface) 85%, transparent);
+}
+
+@utility gold-dot {
+  box-shadow: 0 0 10px color-mix(in oklch, var(--primary) 60%, transparent);
 }
 
 @utility rim-light {
