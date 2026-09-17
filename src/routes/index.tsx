@@ -447,7 +447,7 @@ function Portrait() {
           key={attempt}
           ref={imgRef}
           alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai, wearing glasses and a dark suit"
-          className={`w-full h-full object-cover grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 group-active:grayscale-0 [@media(hover:none)]:grayscale-0 transition-[filter,transform,opacity] duration-700 ease-out will-change-[filter,opacity] motion-reduce:transition-none ${
+          className={`w-full h-full object-cover transition-opacity duration-700 ease-out motion-reduce:transition-none ${
             status === "loaded" ? "opacity-100" : "opacity-0"
           }`}
           style={{
@@ -490,10 +490,10 @@ function Index() {
       >
         <div className="absolute inset-0 z-0">
           {/* Light overlay so the Dubai skyline stays visible behind the content */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/45 to-background/95 z-10 md:from-background/20 md:via-background/60 md:to-background/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/20 to-background/85 z-10 md:from-background/10 md:via-background/40 md:to-background/90" />
           <img
             alt="Dubai skyline at night with illuminated high-rise towers"
-            className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-80 scale-105"
+            className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-95 scale-105"
             src={heroBg}
             loading="eager"
             fetchPriority="high"
@@ -513,6 +513,10 @@ function Index() {
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
                 <Icon name="location_on" className="text-sm" />
                 Dubai, UAE
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
+                <Icon name="language" className="text-sm" />
+                Open to Remote Finance Roles
               </div>
             </div>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold text-shadow">
