@@ -19,15 +19,15 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Abdeali Gangardiwala — Financial Reporting & FP&A Analyst" },
+      { title: "Abdeali Gangardiwala — Financial Reporting & Management Accountant" },
       {
         name: "description",
         content:
-          "Portfolio of Abdeali Gangardiwala, CMA — FP&A analyst specializing in multi-entity financial reporting, dashboards, forecasting and month-end close.",
+          "Portfolio of Abdeali Gangardiwala, CMA — Management Accountant specializing in multi-entity financial reporting, dashboards, forecasting and month-end close.",
       },
       {
         property: "og:title",
-        content: "Abdeali Gangardiwala — Financial Reporting & FP&A Analyst",
+        content: "Abdeali Gangardiwala — Financial Reporting & Management Accountant",
       },
       {
         property: "og:description",
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Abdeali Gangardiwala",
-          jobTitle: "Financial Reporting & FP&A Analyst",
+          jobTitle: "Financial Reporting & Management Accountant",
           email: "mailto:abdealixmain07@gmail.com",
           telephone: "+971553037751",
           url: SITE_URL + "/",
@@ -446,7 +446,7 @@ function Portrait() {
         <img
           key={attempt}
           ref={imgRef}
-          alt="Abdeali Gangardiwala, CMA — Financial Reporting and FP&A Analyst based in Dubai, wearing glasses and a dark suit"
+          alt="Abdeali Gangardiwala, CMA — Financial Reporting and Management Accountant based in Dubai, wearing glasses and a dark suit"
           className={`w-full h-full object-cover transition-opacity duration-700 ease-out motion-reduce:transition-none ${
             status === "loaded" ? "opacity-100" : "opacity-0"
           }`}
