@@ -10,6 +10,11 @@ import portrait480 from "@/assets/portrait-480.webp";
 import portrait768 from "@/assets/portrait-768.webp";
 import portrait1024 from "@/assets/portrait-1024.webp";
 
+import projectImg1 from "@/assets/project-1.webp";
+import projectImg2 from "@/assets/project-2.webp";
+import projectImg3 from "@/assets/project-3.webp";
+import projectImg4 from "@/assets/project-4.webp";
+
 const HERO_URL = hero1280;
 const HERO_SRCSET = `${hero768} 768w, ${hero1280} 1280w, ${hero1920} 1920w`;
 const HERO_SIZES = "100vw";
@@ -128,8 +133,7 @@ const PROJECTS: Project[] = [
     impact:
       "Reduced reporting time by 70%. Enabled faster funding and cost optimization decisions.",
     chips: ["Advanced Excel", "Power Query"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA1UE7AWG5q3a_Otjg2N5GpfS_Bi7ChRaBKTX8Q7-BPaJolDBsP2-sJ-qjAWCoowW1Y2nVHozBlEXg6URR_lZbYrdqTRAu6GbKM6JO4CSvQqGRoyxwjzv3IEhQRt-pi0RavOZzzADk4vVKjceR3_Nx4cPHTQhp-wd4LDrsykIQPNNd9iqKKrFiPlmTWe8WhWMSSgKyRuJ_glWSJXV-6ZcDjtbyRx2fO7DPRthwXjF_Tx37M3VKBBgu7DpATYkRr-5Vr1ZWbft4UnASx",
+    image: projectImg1,
   },
   {
     icon: "query_stats",
@@ -141,8 +145,7 @@ const PROJECTS: Project[] = [
       "Redesigned chart of accounts and reporting structure, restoring financial clarity for stakeholders.",
     impact: "Restored financial clarity for stakeholders. Accurate reporting enabled.",
     chips: ["QuickBooks", "Tally", "Xero"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDikdCJZxyZGw2MBCGaYncEcUO88dNg2mH9CNDd5uDhvOKM7EJQD45b86URr0x7CiCwO3drCpyZwGwu0dayIYzI3AS_O6CUK_PEnpV5aM25TF_9ZD3ioP-oBlizyjOZQ6qmj_NzIUseh4Pf1RWDuZZ4tOe1C6ooEUy5VBWRtuSaqzhh0lR65HTlF0QIDTtMIGzc_GStM3791FQg5t2LVyzcWuoZgRM0SHIriNx8c8UJjoY2bSbmMtumhfFzJaYIVS77fUENT2ERyJwh",
+    image: projectImg2,
   },
   {
     icon: "account_balance_wallet",
@@ -155,8 +158,7 @@ const PROJECTS: Project[] = [
     impact:
       "Improved visibility into performance metrics. Enabled data-driven management decisions.",
     chips: ["Power BI", "Advanced Excel", "Power Query"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAkhjJbr8he_jxlAY4GEx4fHhE-OUgPCfUswifgukG54WmxRATw7HRyBicT9TCvGzPaM7vu_14ydeNZH7vKJIlvZeEhi6jREPVmSfyCgqk6lT2jgF9Ly1WStz8_aP0QQmUm4cgPn3A2UOJNSs37qq5CZyuh6xBcgCcI1BqUs-wo9_A0I_tM3e7fwQ3GIwrT0h4uQfSwH1q2E3uwuMEFI4atZ4GKjY4_QljajOeYou6EamOQG2G6CjXgLIElJkq42wwUE4dnbI9DY0rk",
+    image: projectImg3,
   },
   {
     icon: "monitoring",
@@ -169,8 +171,7 @@ const PROJECTS: Project[] = [
     impact:
       "Enabled proactive investor reporting and strategic capital allocation through precise future cash flow predictions.",
     chips: ["Budgeting", "Investor Reporting", "Forecasting"],
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxoGL1BhCquGVY9VeRTcteYQykGAmGWGPAKYBZ03dTR36JNu4rTBAbMbBMW55LZUuy8MtuDuW_NpiWn5TIb4N6iHd0Ye7L4DsKPbJLll_fW6LF439j2yl7rXPY8Vy0ZOkzEgieSxZcva03wSj__bxBWKGfxPq3ZcdkYEZp_ABDtvg37W6rE9CNPat0BIZAvH0-eAHB8nmX2bGf-UqdBrR9_8A4ikQm5bpD0AXthwdvo-xTcUeetWAdkUkK9CX3H2ux8y-ye-mIrYnU",
+    image: projectImg4,
   },
 ];
 
