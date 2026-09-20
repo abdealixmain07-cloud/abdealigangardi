@@ -514,10 +514,6 @@ function Index() {
                 <Icon name="location_on" className="text-sm" />
                 Dubai, UAE
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-lowest border border-primary/20 text-primary text-xs tracking-widest uppercase rounded">
-                <Icon name="language" className="text-sm" />
-                Open to Remote Finance Roles
-              </div>
             </div>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold text-shadow">
               Financial Reporting &<br />
