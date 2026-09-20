@@ -1,12 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 
-import heroBg from "@/assets/hero-dubai-skyline.jpg";
+import hero768 from "@/assets/hero-768.webp";
+import hero1280 from "@/assets/hero-1280.webp";
+import hero1920 from "@/assets/hero-1920.webp";
 import resumeAsset from "@/assets/abdeali-gangardiwala-cv.pdf.asset.json";
 
 import portrait480 from "@/assets/portrait-480.webp";
 import portrait768 from "@/assets/portrait-768.webp";
 import portrait1024 from "@/assets/portrait-1024.webp";
+
+const HERO_URL = hero1280;
+const HERO_SRCSET = `${hero768} 768w, ${hero1280} 1280w, ${hero1920} 1920w`;
+const HERO_SIZES = "100vw";
 
 const PORTRAIT_URL = portrait768;
 const PORTRAIT_SRCSET = `${portrait480} 480w, ${portrait768} 768w, ${portrait1024} 1024w`;
