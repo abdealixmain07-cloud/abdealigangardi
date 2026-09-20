@@ -55,16 +55,16 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "image",
         href: HERO_URL,
-        imagesrcset: HERO_SRCSET,
-        imagesizes: HERO_SIZES,
+        imageSrcSet: HERO_SRCSET,
+        imageSizes: HERO_SIZES,
         fetchPriority: "high",
       },
       {
         rel: "preload",
         as: "image",
         href: PORTRAIT_URL,
-        imagesrcset: PORTRAIT_SRCSET,
-        imagesizes: PORTRAIT_SIZES,
+        imageSrcSet: PORTRAIT_SRCSET,
+        imageSizes: PORTRAIT_SIZES,
         fetchPriority: "high",
       },
     ],
@@ -343,6 +343,8 @@ function ProjectCard({ project }: { project: Project }) {
                   fetchPriority="low"
                   className="w-full h-full object-contain bg-surface-container-lowest"
                   src={project.image}
+                  width={800}
+                  height={500}
                 />
 
               </div>
