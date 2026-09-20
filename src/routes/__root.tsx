@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Abdeali Gangardiwala — Financial Reporting & FP&A Analyst" },
+      { title: "Abdeali Gangardiwala — Financial Reporting & Management Accountant" },
       {
         name: "description",
         content:
           "CMA professional with 2+ years of experience transforming complex multi-entity financial data into strategic decision-ready intelligence.",
       },
       { name: "author", content: "Abdeali Gangardiwala" },
-      { property: "og:title", content: "Abdeali Gangardiwala — Financial Reporting & FP&A Analyst" },
+      { property: "og:title", content: "Abdeali Gangardiwala — Financial Reporting & Management Accountant" },
       {
         property: "og:description",
         content:
-          "CMA professional specializing in FP&A, financial reporting, and multi-entity accounting across the UAE, US, UK and beyond.",
+          "CMA professional specializing in management accounting, financial reporting, and multi-entity accounting across the UAE, US, UK and beyond.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

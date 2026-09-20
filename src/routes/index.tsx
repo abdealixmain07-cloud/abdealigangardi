@@ -521,7 +521,7 @@ function Index() {
             </div>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary leading-[1.05] font-semibold text-shadow">
               Financial Reporting &<br />
-              FP&amp;A Analyst.
+              Management Accountant.
             </h1>
             <p className="text-on-surface-variant text-lg max-w-xl text-shadow">
               CMA professional with 2+ years of experience specializing in transforming complex
