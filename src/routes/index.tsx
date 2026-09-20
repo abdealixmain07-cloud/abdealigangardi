@@ -515,7 +515,9 @@ function Index() {
           <img
             alt="Dubai skyline at night with illuminated high-rise towers"
             className="w-full h-full object-cover object-bottom md:object-center opacity-100 md:opacity-95 scale-105"
-            src={heroBg}
+            src={HERO_URL}
+            srcSet={HERO_SRCSET}
+            sizes={HERO_SIZES}
             loading="eager"
             fetchPriority="high"
             decoding="async"
