@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, BookOpen, ChartNoAxesCombined, ShieldCheck, Users, Target, PanelsTopLeft, Check, Cloud, Gamepad2, Package, TrendingUp, Building2, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SERVICES, INDUSTRIES } from "@/lib/service-content";
+import { SERVICES, INDUSTRIES, WHY_WORK_WITH_ME } from "@/lib/service-content";
 import { PROJECTS } from "@/lib/portfolio-history";
 
 const serviceIcons = [BookOpen, ChartNoAxesCombined, ShieldCheck, Users, Target, PanelsTopLeft];
@@ -21,6 +21,10 @@ export function IndustryExplorer() {
   if (!industry) return null;
   const Icon = industryIcons[selected] ?? Building2;
   return <div><div role="tablist" aria-label="Business industries" className="mb-9 flex flex-wrap gap-2">{INDUSTRIES.map((item, i) => <Button key={item.name} role="tab" id={`industry-tab-${i}`} aria-selected={selected === i} aria-controls="industry-panel" onClick={() => setSelected(i)} variant={selected === i ? "default" : "outline"} className="h-11 px-5">{item.name}</Button>)}</div><div id="industry-panel" role="tabpanel" aria-labelledby={`industry-tab-${selected}`} className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16"><div><Icon className="mb-5 size-9 text-primary" strokeWidth={1.5} /><h3 className="mb-5 text-3xl leading-tight sm:text-4xl">{industry.problem}</h3><p className="max-w-lg leading-7 text-muted-foreground">{industry.detail}</p></div><div className="border-l-2 border-primary pl-6 sm:pl-9"><p className="eyebrow mb-6">How I can help</p><ul className="space-y-5">{industry.support.map(item => <li className="flex gap-3 leading-7" key={item}><Check className="mt-1 size-5 shrink-0 text-primary" />{item}</li>)}</ul><p className="mt-7 border-t border-border pt-6 font-medium text-primary">{industry.result}</p></div></div></div>;
+}
+
+export function WhyWorkWithMe() {
+  return <section className="border-y border-border bg-background py-16 sm:py-24" aria-labelledby="why-me-heading"><div className="page-width"><div className="mb-12 grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:gap-16"><div><p className="eyebrow mb-4">Independent support. Personal accountability.</p><h2 id="why-me-heading" className="max-w-2xl text-3xl leading-tight sm:text-5xl">Why work with me,<br /><span className="italic text-primary">not a consultancy?</span></h2></div><p className="max-w-xl self-end leading-7 text-muted-foreground">A consultancy can be the right fit for large, specialist projects. If you need a dedicated person to work alongside your team and keep finance moving, independent support offers a different approach.</p></div><div className="grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">{WHY_WORK_WITH_ME.map((reason, i) => <article key={reason.title} className="border-t border-border py-7"><span className="mb-4 block font-display text-2xl text-primary">0{i + 1}</span><h3 className="mb-3 text-2xl">{reason.title}</h3><p className="text-sm leading-7 text-muted-foreground">{reason.text}</p></article>)}</div><Button asChild variant="link" className="mt-3 px-0"><Link to="/contact">Discuss the support you need <ArrowUpRight /></Link></Button></div></section>;
 }
 
 export function ContactCTA() {

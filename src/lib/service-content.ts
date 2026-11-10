@@ -10,6 +10,15 @@ export const PROFILE = {
   engagement: "Hourly freelance support · Scope agreed first",
 };
 
+export const WHY_WORK_WITH_ME = [
+  { title: "One person. Clear accountability.", text: "Work directly with me—from the first conversation to the monthly close. Your questions go to the person doing the work, not through an account-management layer." },
+  { title: "Hands-on work, not just recommendations.", text: "Get practical help with reconciliations, reporting, budgets, and financial controls—not only a presentation of what needs to change." },
+  { title: "A scope shaped around your business.", text: "Choose support for a specific finance project, a busy month-end, or recurring reporting. We agree the deliverables and hourly arrangement before work begins." },
+  { title: "Flexible hours across borders.", text: "Based in Dubai, I offer remote support for Dubai, UK, and US businesses. We agree working-hour overlap around your team’s needs and time zone." },
+  { title: "Continuity behind your numbers.", text: "For ongoing engagements, work with the same finance partner who understands your systems, reporting priorities, and previous decisions." },
+  { title: "Finance connected to your operations.", text: "From SaaS runway and gaming payouts to trading margins and stock costs, I focus on the financial questions behind your business model." },
+];
+
 export const SERVICES = [
   { icon: "BookOpen", title: "Bookkeeping & monthly accounts", text: "Clean ledgers, reconciled balances, and a dependable month-end close. Know where your business stands, without chasing spreadsheets.", outputs: ["Bank & payment reconciliations", "Accounts payable & receivable", "Monthly financial statements"] },
   { icon: "ChartNoAxesCombined", title: "Cash flow & budgeting", text: "Turn uncertainty into a working cash plan. Understand upcoming commitments, funding needs, and the impact of your next decision.", outputs: ["Cash flow forecasts & runway", "Budgets & scenario planning", "Budget-to-actual analysis"] },
