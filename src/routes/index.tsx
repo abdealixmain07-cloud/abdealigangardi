@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight, MapPin, Clock3, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroSkyline } from "@/components/portfolio/media";
-import { ServiceGrid, IndustryExplorer, ContactCTA, MoreLink } from "@/components/portfolio/sections";
+import { ServiceGrid, IndustryExplorer, ContactCTA, MoreLink, WhyWorkWithMe } from "@/components/portfolio/sections";
 import { pageHead } from "@/lib/page-head";
 import { PROFILE } from "@/lib/service-content";
 import hero768 from "@/assets/hero-768.webp";
@@ -35,6 +35,7 @@ function Index() {
     <section className="bg-secondary py-16 sm:py-24"><div className="page-width"><p className="eyebrow mb-4">Different industries. Real financial challenges.</p><h2 className="mb-5 text-3xl sm:text-5xl">Built around <span className="italic text-primary">your business model.</span></h2><p className="mb-10 max-w-2xl leading-7 text-muted-foreground">The right financial support starts with understanding how you earn, spend, and grow.</p><IndustryExplorer /></div></section>
     <section className="page-width grid gap-10 py-16 sm:py-24 lg:grid-cols-[1fr_1.3fr]"><div><p className="eyebrow mb-4">A simple way to work together</p><h2 className="text-3xl sm:text-4xl">Flexible support.<br />A clear scope.</h2><p className="mt-5 max-w-sm leading-7 text-muted-foreground">Hourly freelance support, with working hours and deliverables agreed around your business needs and time zone.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/about">Meet your finance partner <ArrowRight /></Link></Button></div><ol className="space-y-7">{[["Understand", "We discuss your business, current finance challenges, systems, and priorities."], ["Agree", "We define the scope, hourly arrangement, deliverables, and working-hour overlap before work begins."], ["Deliver", "I work remotely with your team, share progress, and provide reporting you can use."]].map(([title, text], i) => <li className="flex gap-5 border-b border-border pb-7" key={title}><span className="font-display text-3xl text-primary">0{i + 1}</span><div><h3 className="mb-2 text-2xl">{title}</h3><p className="text-sm leading-7 text-muted-foreground">{text}</p></div></li>)}</ol></section>
     <section className="page-width flex flex-col items-start justify-between gap-6 border-t border-border py-10 sm:flex-row sm:items-center"><div><p className="eyebrow mb-2">Experience behind the numbers</p><p className="text-lg">Multi-entity reporting. Cross-industry experience. Practical delivery.</p></div><div className="flex flex-wrap gap-3"><Button asChild variant="outline"><Link to="/work">Selected work <ArrowUpRight /></Link></Button><Button asChild variant="ghost"><a href={resume.url} download><Download /> Resume</a></Button></div></section>
+    <WhyWorkWithMe />
     <ContactCTA />
   </main>;
 }
