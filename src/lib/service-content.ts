@@ -7,7 +7,8 @@ export const PROFILE = {
   accaRemaining: 6,
   markets: ["Dubai", "UK", "US"],
   flexibleHours: true,
-  engagement: "Hourly freelance support · Scope agreed first",
+  engagement: "Open to remote Financial Controller roles",
+  availableImmediately: true,
 };
 
 export const WHY_WORK_WITH_ME = [
