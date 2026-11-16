@@ -8,4 +8,5 @@ describe("Required service positioning", () => {
   test("records six ACCA papers remaining", () => assert.equal(PROFILE.accaRemaining, 6));
   test("serves all three requested markets", () => assert.deepEqual(PROFILE.markets, ["Dubai", "UK", "US"]));
   test("supports flexible working hours", () => assert.equal(PROFILE.flexibleHours, true));
+  test("is available to start immediately", () => assert.equal(PROFILE.availableImmediately, true));
 });
