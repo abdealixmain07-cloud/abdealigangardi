@@ -1,7 +1,5 @@
-# Service website redesign
-- [x] Fix test imports and complete the shared page styling and navigation.
-- [x] Redesign around Dubai-based remote accounting and control services.
-- [x] Explain industry problems and relevant services for gaming, SaaS, and both types of trading businesses.
-- [x] Include ACCA progress, flexible working hours, hourly support, and correct contact details.
-- [x] Verify desktop/mobile navigation, images, and contact actions.
-- [x] Apply required package security update.
+# Minimal Financial Controller portfolio
+- [ ] Replace service marketing with a compact career profile and direct contact.
+- [ ] Add an animated, interactive sample finance dashboard.
+- [ ] Show compliance, tools, verified industry experience and Dubai availability.
+- [ ] Verify desktop/mobile views, contact links and tests.
