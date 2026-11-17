@@ -110,7 +110,7 @@ footer{padding:36px 0 50px;font-size:12px;color:var(--mute);letter-spacing:.08em
 .hero .scene svg{height:100%;filter:blur(7px);transform:scale(1.08);opacity:.6}
 .hero .scene:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--bg) 78%,transparent) 0,color-mix(in srgb,var(--bg) 25%,transparent) 75%),linear-gradient(transparent 65%,var(--bg))}
 .hero .sub{max-width:640px;margin:0 auto}.hero .cta,.hero .facts{justify-content:center}
-@media(max-width:700px){.hero{min-height:auto}.hero .wrap{padding:96px 22px 72px}.hero .pill{font-size:10px;letter-spacing:.08em;padding:7px 12px}.hero .sub{font-size:16px}.hero .facts{gap:24px 28px;margin-top:52px}.facts b{font-size:24px}.facts span{font-size:10px}.hero .scene svg{width:100%;opacity:.45}.tool{font-size:22px;padding:18px 26px}.contact h2{font-size:56px}.cl a{font-size:24px;gap:18px}.cl a span{flex-shrink:0}.ind div{font-size:40px}}
+@media(max-width:700px){.hero{min-height:auto}.hero .wrap{padding:56px 22px 48px}.hero .pill{font-size:10px;letter-spacing:.08em;padding:7px 12px}.hero .sub{font-size:16px}.hero .cta{margin-top:28px}.hero .btn{font-size:12px;padding:12px 18px}.hero .facts{gap:16px 28px;margin-top:32px;padding-top:22px}.facts b{font-size:24px}.facts span{font-size:10px}.hero .scene svg{width:100%;opacity:.45}.tool{font-size:22px;padding:18px 26px}.contact h2{font-size:56px}.cl a{font-size:24px;gap:18px}.cl a span{flex-shrink:0}.ind div{font-size:40px}}
 @media(max-width:420px){.contact h2{font-size:44px}.cl a{font-size:20px}.ind div{font-size:34px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 

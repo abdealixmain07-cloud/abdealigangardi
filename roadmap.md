@@ -7,4 +7,4 @@
 # Screenshot design match
 - [x] Match the supplied dark screenshot with ink backgrounds, ivory text and muted-gold accents.
 - [x] Keep the original finance-office animation and content, with proportionate hero spacing on wide screens.
-- [ ] Verify desktop/mobile appearance, scroll reveals and contact actions.
+- [x] Verify desktop/mobile appearance, scroll reveals and contact actions.
