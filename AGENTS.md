@@ -9,6 +9,8 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Render the shared service-site navigation and footer in the root route around Outlet so all content pages remain reachable.
+- Render the supplied single-page header and footer in the index route; keep root Outlet and redirect retired content URLs to page sections so the reference layout is not duplicated.
 - Keep shared business content in browser-safe data modules and optimized image loading in the portfolio media module to avoid duplicated values and loading regressions.
 - Use Node-compatible test imports in source tests so the application TypeScript configuration does not require Bun ambient types.
+
+- Preserve the supplied HTML design in React JSX and its original CSS with semantic Tailwind palette mappings; this keeps animations and automatic colour-scheme behaviour faithful.
