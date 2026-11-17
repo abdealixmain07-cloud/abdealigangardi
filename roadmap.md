@@ -1,6 +1,5 @@
-# Minimal Financial Controller portfolio
-- [ ] Replace service marketing with a compact career profile and direct contact.
-- [ ] Add an animated, interactive sample finance dashboard.
-- [ ] Show compliance, tools, verified industry experience and Dubai availability.
-- [ ] Include immediate availability for remote roles.
-- [ ] Verify desktop/mobile views, contact links and tests.
+# Faithful single-page portfolio
+- [x] Rebuild the uploaded HTML in React and Tailwind, including automatic dark mode and original animations.
+- [x] Preserve the supplied compliance, tools, industries, immediate availability and contact content.
+- [x] Replace the previous redesign and redirect retired pages to the single-page profile.
+- [x] Verify desktop/mobile views, light/dark appearance, contact links, reduced motion and tests.
