@@ -8,3 +8,8 @@
 - [x] Match the supplied dark screenshot with ink backgrounds, ivory text and muted-gold accents.
 - [x] Keep the original finance-office animation and content, with proportionate hero spacing on wide screens.
 - [x] Verify desktop/mobile appearance, scroll reveals and contact actions.
+
+# Mobile animation and full-width blur
+- [x] Remove touch-triggered marquee pauses and keep the chart visible on mobile.
+- [x] Extend the blurred scene across the opening section without a boxed edge.
+- [x] Verify small phones, mobile Safari, desktop, motion and contact navigation.

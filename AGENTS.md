@@ -14,3 +14,4 @@
 - Use Node-compatible test imports in source tests so the application TypeScript configuration does not require Bun ambient types.
 
 - Preserve the supplied HTML design in React JSX and its original CSS with semantic Tailwind palette mappings; this keeps animations and automatic colour-scheme behaviour faithful.
+- Keep the decorative finance scene outside the constrained hero content and limit marquee hover pauses to fine pointers; this prevents boxed backgrounds and sticky touch pauses.
