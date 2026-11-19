@@ -37,6 +37,7 @@ function Index() {
 <div className="row rv"><small>04</small><h3>US &amp; UK accounting and tax</h3><p>Multi-entity books, VAT and tax compliance, and multi-currency reporting across US and UK clients.</p></div>
 <div className="row rv"><small>05</small><h3>AI audit compliance</h3><p>AI-assisted ledger analysis, reconciliations and documentation checks that keep audit files clean and review-ready.</p></div>
 <div className="row rv"><small>06</small><h3>UAE VAT &amp; Corporate Tax</h3><p>VAT and CT compliance handled across a multi-entity setup, alongside a full group audit.</p></div>
+<div className="row rv"><small>07</small><h3>Cost &amp; gap analysis</h3><p>Helping management reduce costs, analyse the gaps, and make insightful decisions with confidence.</p></div>
 </div></section>
 <section id="tools"><div className="wrap">
 <div className="eyebrow rv">Tools</div><h2 className="serif rv">The stack I <em>work in.</em></h2></div>
