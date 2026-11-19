@@ -23,7 +23,6 @@ function Index() {
  return <div ref={root}>
 
 <header className="hero" id="top"><div className="wrap">
-<span className="pill rv"><span className="dot"></span>Open to freelance finance support</span>
 <h1 className="serif rv">Finance<br /><em>Controller.</em></h1>
 <p className="sub rv">Helping businesses keep their numbers clean — currently handling full audits of multi-entity groups, with UAE VAT and Corporate Tax compliance, and IFRS &amp; GAAP compliant reporting.</p>
 <div className="cta rv"><Button asChild variant="reference"><a className="btn p" href="#contact">Get in touch</a></Button><Button asChild variant="reference"><a className="btn" href="#compliance">Compliance &amp; tools</a></Button></div>
@@ -49,7 +48,7 @@ function Index() {
 <section className="contact" id="contact"><div className="wrap">
 <div className="eyebrow rv">Let’s connect</div><h2 className="serif rv">Your next <em>finance hire.</em></h2>
 <p className="sub rv" style={{"marginBottom": "44px"} as CSSProperties}>Dubai, UAE · Open to freelance work and helping businesses across Dubai, the UK and US, with flexible hours and time-zone overlap.</p>
-<div className="cl rv"><a href="mailto:abdealixmain07@gmail.com">abdealixmain07@gmail.com <span>→</span></a><a href="tel:+971553037751">+971 55 303 7751 <span>→</span></a><a href="https://www.linkedin.com/in/abdeali-main/" target="_blank" rel="noopener">LinkedIn <span>→</span></a></div>
+<div className="cl rv"><a href="mailto:abdealixmain07@gmail.com">abdealixmain07@gmail.com <span>→</span></a><a href="https://www.linkedin.com/in/abdeali-main/" target="_blank" rel="noopener">LinkedIn <span>→</span></a></div>
 </div></section>
 <div className="wrap"><footer><span>© 2026 Abdeali Gangardiwala</span><span>Dubai, UAE · Finance Controller</span></footer></div>
 
